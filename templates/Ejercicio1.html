@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculo de Compras</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/estilosEjercicio1.css">
+</head>
+<body>
+<div class="container">
+    <h1> Calculo de Compras</h1>
+    <form method="POST">
+        <label for="nombre">Ingresa tu nombre:</label>
+        <input type="text" name="nombre" id="nombre" value="{{ nombre }}" required><br>
+        <label for="edad">Ingresa Tu edad:</label>
+        <input type="number" name="edad" id="edad" value="{{ edad }}" required><br>
+        <label for="cantidad_de_tarros">Ingresa la cantidad de tarros de pintura a comprar</label>
+        <input type="number" name="cantidad_de_tarros" id="cantidad_de_tarros" value="{{ cantidad_de_tarros }}" required><br>
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if error_nombre %}
+        <p>{{ error_nombre }}</p>
+    {% endif %}
+    {% if error_edad %}
+        <p>{{ error_edad }}</p>
+    {% endif %}
+    {% if error_cantidad_de_tarros %}
+        <p>{{ error_cantidad_de_tarros }}</p>
+    {% endif %}
+    {% if not error_nombre and not error_edad and not error_cantidad_de_tarros %}
+        <p> El nombre del cliente es: {{ nombre }} </p>
+        <p> El Total sin descuento es: {{ total_compra }} </p>
+        <p> El descuento es: {{ descuento }} </p>
+        <p> El total a pagar es de: {{ total_a_pagar }} </p>
+    {% endif %}
+</div>
+</body>
+</html>
